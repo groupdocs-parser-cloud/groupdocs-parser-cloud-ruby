@@ -37,11 +37,27 @@ module GroupDocsParserCloud
     # Gets or sets the image download URL.
     attr_accessor :download_url
 
+    # Gets or sets the index of the page.
+    attr_accessor :page_index
+
+    # Gets or sets the rotation of the image in degrees.
+    attr_accessor :rotation
+
+    # Gets or sets the image file format.
+    attr_accessor :file_format
+
+    # Gets or sets the rectangle area of the image.
+    attr_accessor :rectangle
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'path' => :'Path',
-        :'download_url' => :'DownloadUrl'
+        :'download_url' => :'DownloadUrl',
+        :'page_index' => :'PageIndex',
+        :'rotation' => :'Rotation',
+        :'file_format' => :'FileFormat',
+        :'rectangle' => :'Rectangle'
       }
     end
 
@@ -49,7 +65,11 @@ module GroupDocsParserCloud
     def self.swagger_types
       {
         :'path' => :'String',
-        :'download_url' => :'String'
+        :'download_url' => :'String',
+        :'page_index' => :'Integer',
+        :'rotation' => :'Float',
+        :'file_format' => :'String',
+        :'rectangle' => :'Rectangle'
       }
     end
 
@@ -67,6 +87,22 @@ module GroupDocsParserCloud
 
       if attributes.key?(:'DownloadUrl')
         self.download_url = attributes[:'DownloadUrl']
+      end
+
+      if attributes.key?(:'PageIndex')
+        self.page_index = attributes[:'PageIndex']
+      end
+
+      if attributes.key?(:'Rotation')
+        self.rotation = attributes[:'Rotation']
+      end
+
+      if attributes.key?(:'FileFormat')
+        self.file_format = attributes[:'FileFormat']
+      end
+
+      if attributes.key?(:'Rectangle')
+        self.rectangle = attributes[:'Rectangle']
       end
 
     end
@@ -90,7 +126,11 @@ module GroupDocsParserCloud
       return true if self.equal?(other)
       self.class == other.class &&
           path == other.path &&
-          download_url == other.download_url
+          download_url == other.download_url &&
+          page_index == other.page_index &&
+          rotation == other.rotation &&
+          file_format == other.file_format &&
+          rectangle == other.rectangle
     end
 
     # @see the `==` method
@@ -102,7 +142,7 @@ module GroupDocsParserCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [path, download_url].hash
+      [path, download_url, page_index, rotation, file_format, rectangle].hash
     end
 
     # Downcases first letter.

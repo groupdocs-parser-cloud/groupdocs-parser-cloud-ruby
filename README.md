@@ -12,7 +12,7 @@ gem install groupdocs_parser_cloud
 To add dependency to your app copy following into your Gemfile and run `bundle install`:
 
 ```
-gem "groupdocs_parser_cloud", "~> 19.11"
+gem "groupdocs_parser_cloud", "~> 20.6"
 ```
 
 ## Getting Started

@@ -40,12 +40,16 @@ module GroupDocsParserCloud
     # Gets or sets the total number of document pages.
     attr_accessor :page_count
 
+    # Gets or sets the encoding.
+    attr_accessor :encoding
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'file_type' => :'FileType',
         :'size' => :'Size',
-        :'page_count' => :'PageCount'
+        :'page_count' => :'PageCount',
+        :'encoding' => :'Encoding'
       }
     end
 
@@ -54,7 +58,8 @@ module GroupDocsParserCloud
       {
         :'file_type' => :'FileType',
         :'size' => :'Integer',
-        :'page_count' => :'Integer'
+        :'page_count' => :'Integer',
+        :'encoding' => :'String'
       }
     end
 
@@ -76,6 +81,10 @@ module GroupDocsParserCloud
 
       if attributes.key?(:'PageCount')
         self.page_count = attributes[:'PageCount']
+      end
+
+      if attributes.key?(:'Encoding')
+        self.encoding = attributes[:'Encoding']
       end
 
     end
@@ -110,7 +119,8 @@ module GroupDocsParserCloud
       self.class == other.class &&
           file_type == other.file_type &&
           size == other.size &&
-          page_count == other.page_count
+          page_count == other.page_count &&
+          encoding == other.encoding
     end
 
     # @see the `==` method
@@ -122,7 +132,7 @@ module GroupDocsParserCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [file_type, size, page_count].hash
+      [file_type, size, page_count, encoding].hash
     end
 
     # Downcases first letter.
