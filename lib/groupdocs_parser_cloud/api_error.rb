@@ -48,8 +48,10 @@ module GroupDocsParserCloud
               end
             elsif !data[:Error].nil? && !data[:Error][:Message].nil?
               @message = data[:Error][:Message]
+            elsif !data[:message].nil?
+              @message = data[:message]
             end
-          end
+		  end
         end
 
         if arg.key?(:arg) then

@@ -45,6 +45,30 @@ module GroupDocsParserCloud
       assert response.container_items.any? { |a| a.name == "one-page.docx" }
     end
 
+    def test_get_container_item_info_rar
+      file = TestFile.rar
+      options = ContainerOptions.new
+      options.file_info = file.file_info
+      request = ContainerRequest.new(options)
+
+      response = @info_api.container(request)
+      assert response != nil
+      assert_equal 2, response.container_items.count
+      assert response.container_items.any? { |a| a.name == "sample.docx" }
+    end
+
+    def test_get_container_item_info_tar
+      file = TestFile.tar
+      options = ContainerOptions.new
+      options.file_info = file.file_info
+      request = ContainerRequest.new(options)
+
+      response = @info_api.container(request)
+      assert response != nil
+      assert_equal 5, response.container_items.count
+      assert response.container_items.any? { |a| a.name == "sample.docx" }
+    end
+
     def test_get_container_item_info_file_not_found_result
       file = TestFile.not_exist
       options = ContainerOptions.new

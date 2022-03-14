@@ -135,6 +135,27 @@ module GroupDocsParserCloud
       f
     end
 
+    def self.rar
+      f = TestFile.new
+      f.file_name = "sample.rar"
+      f.folder = "containers\\archive\\"
+      f
+    end
+
+    def self.tar
+      f = TestFile.new
+      f.file_name = "sample.tar"
+      f.folder = "containers\\archive\\"
+      f
+    end
+
+    def self.md
+      f = TestFile.new
+      f.file_name = "sample.md"
+      f.folder = "words\\docx\\"
+      f
+    end
+
     def self.test_files_list
       [
         self.password_protected,

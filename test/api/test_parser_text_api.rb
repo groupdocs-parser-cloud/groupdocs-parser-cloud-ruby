@@ -44,6 +44,18 @@ module GroupDocsParserCloud
       assert_equal "First Page\r\r\f", response.text
     end
 
+    def test_extract_txt_md
+      file = TestFile.md
+      options = TextOptions.new
+      options.file_info = file.file_info
+      request = TextRequest.new(options)
+
+      response = @parse_api.text(request)
+      assert response != nil
+      assert_equal "# Test\r\rText for test:\r\r\tOne\r\tTwo\r\tSub1\rSub2\r\tThree\r\rBullets:\r\rA\rAA\rB\rC\f", response.text
+    end
+
+
     def test_extract_pages
       file = TestFile.four_pages
       options = TextOptions.new
