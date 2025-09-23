@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose Pty Ltd" file="file_type.rb">
+ # <copyright company="Aspose Pty Ltd" file="barcodes_result.rb">
  #   Copyright (c) Aspose Pty Ltd
  # </copyright>
  # <summary>
@@ -28,28 +28,23 @@
 require 'date'
 
 module GroupDocsParserCloud
-  # Represents the file type. 
-  class FileType
+  
+  class BarcodesResult
 
-    # Gets or sets the file type name e.g. \"Microsoft Word Document\".
-    attr_accessor :file_format
-
-    # Gets or sets the filename suffix (including the period \".\") e.g. \".doc\".
-    attr_accessor :extension
+    # Gets or sets a collection of barcodes.
+    attr_accessor :barcodes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'file_format' => :'FileFormat',
-        :'extension' => :'Extension'
+        :'barcodes' => :'Barcodes'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'file_format' => :'String',
-        :'extension' => :'String'
+        :'barcodes' => :'Array<Barcode>'
       }
     end
 
@@ -61,12 +56,10 @@ module GroupDocsParserCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'FileFormat')
-        self.file_format = attributes[:'FileFormat']
-      end
-
-      if attributes.key?(:'Extension')
-        self.extension = attributes[:'Extension']
+      if attributes.key?(:'Barcodes')
+        if (value = attributes[:'Barcodes']).is_a?(Array)
+          self.barcodes = value
+        end
       end
 
     end
@@ -89,8 +82,7 @@ module GroupDocsParserCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          file_format == other.file_format &&
-          extension == other.extension
+          barcodes == other.barcodes
     end
 
     # @see the `==` method
@@ -102,7 +94,7 @@ module GroupDocsParserCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [file_format, extension].hash
+      [barcodes].hash
     end
 
     # Downcases first letter.

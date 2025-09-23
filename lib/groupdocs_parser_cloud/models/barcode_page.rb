@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose Pty Ltd" file="file_type.rb">
+ # <copyright company="Aspose Pty Ltd" file="barcode_page.rb">
  #   Copyright (c) Aspose Pty Ltd
  # </copyright>
  # <summary>
@@ -28,28 +28,28 @@
 require 'date'
 
 module GroupDocsParserCloud
-  # Represents the file type. 
-  class FileType
+  
+  class BarcodePage
 
-    # Gets or sets the file type name e.g. \"Microsoft Word Document\".
-    attr_accessor :file_format
+    # Gets the page index.
+    attr_accessor :index
 
-    # Gets or sets the filename suffix (including the period \".\") e.g. \".doc\".
-    attr_accessor :extension
+    # Gets the page size.
+    attr_accessor :size
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'file_format' => :'FileFormat',
-        :'extension' => :'Extension'
+        :'index' => :'Index',
+        :'size' => :'Size'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'file_format' => :'String',
-        :'extension' => :'String'
+        :'index' => :'Integer',
+        :'size' => :'Size'
       }
     end
 
@@ -61,12 +61,12 @@ module GroupDocsParserCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'FileFormat')
-        self.file_format = attributes[:'FileFormat']
+      if attributes.key?(:'Index')
+        self.index = attributes[:'Index']
       end
 
-      if attributes.key?(:'Extension')
-        self.extension = attributes[:'Extension']
+      if attributes.key?(:'Size')
+        self.size = attributes[:'Size']
       end
 
     end
@@ -75,12 +75,17 @@ module GroupDocsParserCloud
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = []
+      if @index.nil?
+        invalid_properties.push("invalid value for 'index', index cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @index.nil?
       return true
     end
 
@@ -89,8 +94,8 @@ module GroupDocsParserCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          file_format == other.file_format &&
-          extension == other.extension
+          index == other.index &&
+          size == other.size
     end
 
     # @see the `==` method
@@ -102,7 +107,7 @@ module GroupDocsParserCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [file_format, extension].hash
+      [index, size].hash
     end
 
     # Downcases first letter.

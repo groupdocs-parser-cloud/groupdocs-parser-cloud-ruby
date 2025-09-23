@@ -1,7 +1,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#    Copyright (c) 2003-2019 Aspose Pty Ltd
+#    Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -75,22 +75,22 @@ module GroupDocsParserCloud
       options.file_info = file.file_info
       request = ContainerRequest.new(options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @info_api.container(request)
       end
       assert error.message.include? "Can't find file located at 'folder\\file-not-exist.pdf'."
     end
 
     def test_get_container_item_info_unsupported_file
-      file = TestFile.four_pages
+      file = TestFile.video
       options = ContainerOptions.new
       options.file_info = file.file_info
       request = ContainerRequest.new(options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @info_api.container(request)
       end
-      assert error.message.include? "The specified file 'words\\docx\\four-pages.docx' has type which is not currently supported."
+      assert error.message.include? "The specified file 'video\\avi\\sample.avi' has type which is not currently supported."
     end
 
     def test_get_container_item_info_empty_options

@@ -1,7 +1,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="test_file.rb">
-#    Copyright (c) 2003-2019 Aspose Pty Ltd
+#    Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -60,6 +60,13 @@ module GroupDocsParserCloud
     def self.one_page
       f = TestFile.new
       f.file_name = "one-page.docx"
+      f.folder = "words\\docx\\"
+      f
+    end
+
+    def self.barcode
+      f = TestFile.new
+      f.file_name = "barcodes.docx"
       f.folder = "words\\docx\\"
       f
     end
@@ -153,6 +160,13 @@ module GroupDocsParserCloud
       f = TestFile.new
       f.file_name = "sample.md"
       f.folder = "words\\docx\\"
+      f
+    end
+
+    def self.video
+      f = TestFile.new
+      f.file_name = "sample.avi"
+      f.folder = "video\\avi\\"
       f
     end
 

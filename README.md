@@ -1,41 +1,48 @@
 # GroupDocs.Parser Cloud Ruby SDK
-Ruby gem for communicating with the GroupDocs.Parser Cloud API
+Ruby gem for communicating with the GroupDocs.Parser Cloud API. This SDK allows you to work with GroupDocs.Parser Cloud REST APIs in your Ruby applications.
+
+## Requirements
+
+Ruby 2.4+
 
 ## Installation
 
-A gem of groupdocs_parser_cloud is available at [rubygems.org](https://rubygems.org). You can install it with:
+Install `groupdocs_parser_cloud` from [RubyGems](https://rubygems.org):
 
-```shell
+```sh
 gem install groupdocs_parser_cloud
-```    
-
-To add dependency to your app copy following into your Gemfile and run `bundle install`:
-
 ```
-gem "groupdocs_parser_cloud", "~> 22.3"
+
+Or add the dependency to your Gemfile and run `bundle install`:
+
+```ruby
+gem "groupdocs_parser_cloud", "~> 25.7"
 ```
 
 ## Getting Started
 
-Please follow the [installation](#installation) procedure and then run the following code:
+Please follow the [installation procedure](#installation) and then run the following code:
+
 ```ruby
-# Load the gem
-require 'groupdocs_parser_cloud'
+# Import modules
+require "./Common.rb"
 
-# Get your app_sid and app_key at https://dashboard.groupdocs.cloud (free registration is required).
-app_sid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-app_key = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+#  This example demonstrates how to extract formatted text from document.
+class ExtractFormattedText
+  def self.Run()
+    parseApi = GroupDocsParserCloud::ParseApi.from_config($config)
+    options = GroupDocsParserCloud::TextOptions.new
+    options.file_info = GroupDocsParserCloud::FileInfo.new
+    options.file_info.file_path = "words-processing/docx/formatted-document.docx"
 
-# Create instance of the API class
-api = GroupDocsParserCloud::InfoApi.from_keys(app_sid, app_key)
+    text_options = GroupDocsParserCloud::FormattedTextOptions.new
+    text_options.mode = "Markdown"
+    options.formatted_text_options = text_options
 
-# Retrieve supported file-formats
-response = api.get_supported_file_formats
-
-# Print out supported file-formats
-puts("Supported file-formats:")
-response.formats.each do |format|
-  puts("#{format.file_format} (#{format.extension})") 
+    request = GroupDocsParserCloud::TextRequest.new(options)
+    response = parseApi.text(request)
+    puts("Text:" + response.text)
+  end
 end
 ```
 
@@ -50,4 +57,4 @@ GroupDocs.Parser Cloud Ruby SDK licensed under [MIT License](LICENSE).
 + [**Blog**](https://blog.groupdocs.cloud/category/parser)
 
 ## Contact Us
-Your feedback is very important to us. Please feel free to contact us using our [Support Forums](https://forum.groupdocs.cloud/c/parser).
+Your feedback is very important to us. Please feel free to contact us

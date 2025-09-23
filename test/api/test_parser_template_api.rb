@@ -1,7 +1,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#    Copyright (c) 2003-2019 Aspose Pty Ltd
+#    Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -126,7 +126,7 @@ module GroupDocsParserCloud
       delete_options.template_path = "notExistTemplate.json"
       delete_request = DeleteTemplateRequest.new(delete_options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @template_api.delete_template(delete_request)
       end
 
@@ -137,7 +137,7 @@ module GroupDocsParserCloud
       delete_options = TemplateOptions.new
       delete_request = DeleteTemplateRequest.new(delete_options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @template_api.delete_template(delete_request)
       end
 

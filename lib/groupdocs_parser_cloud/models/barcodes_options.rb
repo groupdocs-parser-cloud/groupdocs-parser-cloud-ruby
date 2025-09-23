@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose Pty Ltd" file="file_type.rb">
+ # <copyright company="Aspose Pty Ltd" file="barcodes_options.rb">
  #   Copyright (c) Aspose Pty Ltd
  # </copyright>
  # <summary>
@@ -28,28 +28,43 @@
 require 'date'
 
 module GroupDocsParserCloud
-  # Represents the file type. 
-  class FileType
+  # Barcode options.
+  class BarcodesOptions
 
-    # Gets or sets the file type name e.g. \"Microsoft Word Document\".
-    attr_accessor :file_format
+    # Gets or sets the file information.
+    attr_accessor :file_info
 
-    # Gets or sets the filename suffix (including the period \".\") e.g. \".doc\".
-    attr_accessor :extension
+    # Gets or sets the container item information.
+    attr_accessor :container_item_info
+
+    # Gets or sets the output path for extracted barcodes.
+    attr_accessor :output_path
+
+    # Gets or sets the zero-based start page index.
+    attr_accessor :start_page_number
+
+    # Gets or sets the number of pages to extract.
+    attr_accessor :count_pages_to_extract
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'file_format' => :'FileFormat',
-        :'extension' => :'Extension'
+        :'file_info' => :'FileInfo',
+        :'container_item_info' => :'ContainerItemInfo',
+        :'output_path' => :'OutputPath',
+        :'start_page_number' => :'StartPageNumber',
+        :'count_pages_to_extract' => :'CountPagesToExtract'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'file_format' => :'String',
-        :'extension' => :'String'
+        :'file_info' => :'FileInfo',
+        :'container_item_info' => :'ContainerItemInfo',
+        :'output_path' => :'String',
+        :'start_page_number' => :'Integer',
+        :'count_pages_to_extract' => :'Integer'
       }
     end
 
@@ -61,12 +76,24 @@ module GroupDocsParserCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'FileFormat')
-        self.file_format = attributes[:'FileFormat']
+      if attributes.key?(:'FileInfo')
+        self.file_info = attributes[:'FileInfo']
       end
 
-      if attributes.key?(:'Extension')
-        self.extension = attributes[:'Extension']
+      if attributes.key?(:'ContainerItemInfo')
+        self.container_item_info = attributes[:'ContainerItemInfo']
+      end
+
+      if attributes.key?(:'OutputPath')
+        self.output_path = attributes[:'OutputPath']
+      end
+
+      if attributes.key?(:'StartPageNumber')
+        self.start_page_number = attributes[:'StartPageNumber']
+      end
+
+      if attributes.key?(:'CountPagesToExtract')
+        self.count_pages_to_extract = attributes[:'CountPagesToExtract']
       end
 
     end
@@ -89,8 +116,11 @@ module GroupDocsParserCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          file_format == other.file_format &&
-          extension == other.extension
+          file_info == other.file_info &&
+          container_item_info == other.container_item_info &&
+          output_path == other.output_path &&
+          start_page_number == other.start_page_number &&
+          count_pages_to_extract == other.count_pages_to_extract
     end
 
     # @see the `==` method
@@ -102,7 +132,7 @@ module GroupDocsParserCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [file_format, extension].hash
+      [file_info, container_item_info, output_path, start_page_number, count_pages_to_extract].hash
     end
 
     # Downcases first letter.

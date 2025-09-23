@@ -1,6 +1,6 @@
 # ------------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="groupdocs_parser_cloud.rb">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,11 +25,14 @@
 
 # Common files
 require_relative 'groupdocs_parser_cloud/api_client'
-require_relative 'groupdocs_parser_cloud/api_error'
+require_relative 'groupdocs_parser_cloud/api_client_error'
 require_relative 'groupdocs_parser_cloud/version'
 require_relative 'groupdocs_parser_cloud/configuration'
 
 # Models
+require_relative 'groupdocs_parser_cloud/models/barcode'
+require_relative 'groupdocs_parser_cloud/models/barcode_page'
+require_relative 'groupdocs_parser_cloud/models/barcodes_result'
 require_relative 'groupdocs_parser_cloud/models/container_item'
 require_relative 'groupdocs_parser_cloud/models/container_item_info'
 require_relative 'groupdocs_parser_cloud/models/container_result'
@@ -75,6 +78,7 @@ require_relative 'groupdocs_parser_cloud/models/template_result'
 require_relative 'groupdocs_parser_cloud/models/text_page'
 require_relative 'groupdocs_parser_cloud/models/text_result'
 require_relative 'groupdocs_parser_cloud/models/text_style'
+require_relative 'groupdocs_parser_cloud/models/barcodes_options'
 require_relative 'groupdocs_parser_cloud/models/container_options'
 require_relative 'groupdocs_parser_cloud/models/file_version'
 require_relative 'groupdocs_parser_cloud/models/images_options'

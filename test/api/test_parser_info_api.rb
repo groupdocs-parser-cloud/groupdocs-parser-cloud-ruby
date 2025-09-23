@@ -1,7 +1,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#    Copyright (c) 2003-2019 Aspose Pty Ltd
+#    Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -77,7 +77,7 @@ module GroupDocsParserCloud
       request = GetInfoRequest.new(options)
       begin
         @info_api.get_info(request)
-      rescue ApiError => error
+      rescue ApiClientError => error
         assert error.message == "Can't find file located at 'folder\\file-not-exist.pdf'."
       end
     end
@@ -89,7 +89,7 @@ module GroupDocsParserCloud
       options.file_info = file.file_info
       request = GetInfoRequest.new(options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @info_api.get_info(request)
       end
       assert error.message.include? "Password provided for file 'words\\docx\\password-protected.docx' is incorrect."

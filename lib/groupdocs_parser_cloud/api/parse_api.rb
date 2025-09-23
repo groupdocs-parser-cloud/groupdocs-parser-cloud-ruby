@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="parse.rb">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -62,6 +62,58 @@ module GroupDocsParserCloud
     # @return [ParseApi] New instance of ParseApi
     def self.from_config(config)
       return new(config)
+    end
+
+    # Extract barcodes from document.
+    # 
+    # @param request barcodes_request
+    # @return [BarcodesResult]
+    def barcodes(request)
+      data, _status_code, _headers = barcodes_with_http_info(request)
+      data
+    end
+
+    # Extract barcodes from document.
+    # 
+    # @param request barcodes_request
+    # @return [Array<(BarcodesResult, Fixnum, Hash)>]
+    # BarcodesResult data, response status code and response headers
+    def barcodes_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? BarcodesRequest
+
+      @api_client.config.logger.debug 'Calling API: ParseApi.barcodes ...' if @api_client.config.debugging
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling ParseApi.barcodes' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/parser/barcodes'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        access_token: get_access_token,
+                                                        return_type: 'BarcodesResult')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        ParseApi#barcodes\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
     end
 
     # Extract images from document.
@@ -276,8 +328,53 @@ module GroupDocsParserCloud
 end
  #
  # --------------------------------------------------------------------------------------------------------------------
+ # <copyright company="Aspose Pty Ltd" file="barcodes_request.rb">
+ #   Copyright (c) Aspose Pty Ltd
+ # </copyright>
+ # <summary>
+ #  Permission is hereby granted, free of charge, to any person obtaining a copy
+ #  of this software and associated documentation files (the "Software"), to deal
+ #  in the Software without restriction, including without limitation the rights
+ #  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ #  copies of the Software, and to permit persons to whom the Software is
+ #  furnished to do so, subject to the following conditions:
+ # 
+ #  The above copyright notice and this permission notice shall be included in all
+ #  copies or substantial portions of the Software.
+ # 
+ #  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ #  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ #  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ #  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ #  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ #  SOFTWARE.
+ # </summary>
+ # --------------------------------------------------------------------------------------------------------------------
+ #
+
+module GroupDocsParserCloud
+
+  #
+  # Request model for barcodes operation.
+  #
+  class BarcodesRequest
+
+        # Extract barcode options.
+        attr_accessor :options
+	
+        #
+        # Initializes a new instance.
+        # @param options Extract barcode options.
+        def initialize(options)
+           self.options = options
+        end
+  end
+end
+ #
+ # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose Pty Ltd" file="images_request.rb">
- #   Copyright (c) 2003-2019 Aspose Pty Ltd
+ #   Copyright (c) Aspose Pty Ltd
  # </copyright>
  # <summary>
  #  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -322,7 +419,7 @@ end
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose Pty Ltd" file="parse_request.rb">
- #   Copyright (c) 2003-2019 Aspose Pty Ltd
+ #   Copyright (c) Aspose Pty Ltd
  # </copyright>
  # <summary>
  #  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -367,7 +464,7 @@ end
  #
  # --------------------------------------------------------------------------------------------------------------------
  # <copyright company="Aspose Pty Ltd" file="text_request.rb">
- #   Copyright (c) 2003-2019 Aspose Pty Ltd
+ #   Copyright (c) Aspose Pty Ltd
  # </copyright>
  # <summary>
  #  Permission is hereby granted, free of charge, to any person obtaining a copy

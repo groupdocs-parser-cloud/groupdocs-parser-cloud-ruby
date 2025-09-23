@@ -1,6 +1,6 @@
 # -----------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd" file="api_client.rb">
-#   Copyright (c) 2003-2019 Aspose Pty Ltd
+#   Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,7 +30,7 @@ require 'tempfile'
 require 'faraday'
 require 'addressable'
 require_relative 'version'
-require_relative 'api_error'
+require_relative 'api_client_error'
 
 module GroupDocsParserCloud
   #
@@ -68,7 +68,7 @@ module GroupDocsParserCloud
       end
 
       unless response.success?
-        raise ApiError.new(:code => response.status, :response_body => response.body)
+        raise ApiClientError.new(:code => response.status, :response_body => response.body)
       end
       
       data = deserialize(response, opts[:return_type]) if opts[:return_type]
@@ -280,7 +280,7 @@ module GroupDocsParserCloud
         form_params.each do |key, value|
           case value
           when ::File
-            data[key] = Faraday::UploadIO.new(value.path, MimeMagic.by_magic(value).to_s, key)
+            data[key] = Faraday::UploadIO.new(value.path, "application/octet-stream", key)
           when ::Array, nil
             data[key] = value
           else

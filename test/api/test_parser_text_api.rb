@@ -1,7 +1,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#    Copyright (c) 2003-2019 Aspose Pty Ltd
+#    Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -70,9 +70,9 @@ module GroupDocsParserCloud
       response = @parse_api.text(request)
       assert response != nil
       assert_equal 0, response.pages[0].page_index
-      assert_equal "Text inside bookmark 0\r\n\r\nPage 0 heading\r\n\r\nPage Text - Page 0\r\n\r\n\fText inside bookmark 1\r\n\r\n", response.pages[0].text
+      assert_equal "Text inside bookmark 0\n\nPage 0 heading\n\nPage Text - Page 0\n\n\fText inside bookmark 1\n\n", response.pages[0].text
       assert_equal 3, response.pages[3].page_index
-      assert_equal "\fText inside bookmark 3\r\n\r\nPage 3 heading\r\n\r\nPage Text - Page 3\r\n\r\n", response.pages[3].text
+      assert_equal "\fText inside bookmark 3\n\nPage 3 heading\n\nPage Text - Page 3\n\n", response.pages[3].text
     end
 
     def test_extract_formatted
@@ -100,7 +100,7 @@ module GroupDocsParserCloud
       options.file_info = file.file_info
       request = TextRequest.new(options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @parse_api.text(request)
       end
 
@@ -114,7 +114,7 @@ module GroupDocsParserCloud
       options.file_info = file.file_info
       request = TextRequest.new(options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @parse_api.text(request)
       end
 

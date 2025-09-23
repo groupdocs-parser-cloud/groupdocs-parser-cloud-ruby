@@ -1,6 +1,6 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
-# <copyright company="Aspose Pty Ltd" file="test_auth_api.rb">
+# <copyright company="Aspose Pty Ltd">
 #    Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
@@ -26,46 +26,24 @@
 #
 
 module GroupDocsParserCloud
-  require "minitest/autorun"
-  require "minitest/unit"
+    require_relative "./../test_context"
+    require_relative "./../test_settings"
+    require_relative "./../test_file"
+  
+    class TestParserBarcodeApi < TestContext
+      include MiniTest::Assertions
 
-  require_relative "./../../lib/groupdocs_parser_cloud"
-  require_relative "../test_settings"
-
-  class TestAuthApi < Minitest::Test
-    def init_info_api(app_sid, app_key)
-      config = Configuration.new(app_sid, app_key)
-      config.api_base_url = TestSettings::API_BASE_URL
-
-      InfoApi.from_config(config)
-    end
-
-    # unit tests to check auth error
-    def test_auth_error_when_app_sid_not_found
-      app_sid = "test"
-      app_key = "test"
-
-      info_api = init_info_api(app_sid, app_key)
-
-      error = assert_raises ApiClientError do
-        info_api.get_supported_file_formats
+      def test_get_barcode_docx
+        file = TestFile.barcode
+        options = BarcodesOptions.new
+        options.file_info = file.file_info
+        request = BarcodesRequest.new(options)
+  
+        response = @parse_api.barcodes(request)
+        assert response != nil
+        response.barcodes.each do |barcode|
+          assert barcode.value != nil
+        end
       end
-
-      assert_equal "invalid_client", error.message
     end
-
-    # unit tests to check auth error
-    def test_auth_error_when_app_key_not_found
-      app_sid = TestSettings::APP_SID
-      app_key = "test"
-
-      info_api = init_info_api(app_sid, app_key)
-
-      error = assert_raises ApiClientError do
-        info_api.get_supported_file_formats
-      end
-
-      assert_equal "invalid_client", error.message
-    end
-  end
 end

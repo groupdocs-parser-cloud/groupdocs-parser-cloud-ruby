@@ -1,7 +1,7 @@
 #
 # --------------------------------------------------------------------------------------------------------------------
 # <copyright company="Aspose Pty Ltd">
-#    Copyright (c) 2003-2019 Aspose Pty Ltd
+#    Copyright (c) Aspose Pty Ltd
 # </copyright>
 # <summary>
 #   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -39,7 +39,7 @@ module GroupDocsParserCloud
       options.file_info = file.file_info
       request = ImagesRequest.new(options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @parse_api.images(request)
       end
 
@@ -53,7 +53,7 @@ module GroupDocsParserCloud
       options.file_info = file.file_info
       request = ImagesRequest.new(options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @parse_api.images(request)
       end
 
@@ -82,8 +82,8 @@ module GroupDocsParserCloud
 
       response = @parse_api.images(request)
       assert response != nil
-      response.images.each do |image|
-        assert image.path.include? "parser/images/containers/archive/zip-eml-jpg-pdf_zip/"
+      response.images.each do |image|        
+        assert image.path.include? "containers/archive/zip-eml-jpg-pdf_zip/"
         assert image.download_url != nil
       end
     end
@@ -145,7 +145,7 @@ module GroupDocsParserCloud
       options.count_pages_to_extract = 5
       request = ImagesRequest.new(options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @parse_api.images(request)
       end
 
@@ -160,7 +160,7 @@ module GroupDocsParserCloud
       options.count_pages_to_extract = 5
       request = ImagesRequest.new(options)
 
-      error = assert_raises ApiError do
+      error = assert_raises ApiClientError do
         @parse_api.images(request)
       end
 

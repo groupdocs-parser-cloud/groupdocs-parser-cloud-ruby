@@ -1,6 +1,6 @@
  #
  # --------------------------------------------------------------------------------------------------------------------
- # <copyright company="Aspose Pty Ltd" file="file_type.rb">
+ # <copyright company="Aspose Pty Ltd" file="barcode.rb">
  #   Copyright (c) Aspose Pty Ltd
  # </copyright>
  # <summary>
@@ -28,28 +28,43 @@
 require 'date'
 
 module GroupDocsParserCloud
-  # Represents the file type. 
-  class FileType
+  # Represents an barcode.
+  class Barcode
 
-    # Gets or sets the file type name e.g. \"Microsoft Word Document\".
-    attr_accessor :file_format
+    # Gets the name of the barcode type.
+    attr_accessor :code_type_name
 
-    # Gets or sets the filename suffix (including the period \".\") e.g. \".doc\".
-    attr_accessor :extension
+    # Gets the document page information such as page index and page size.
+    attr_accessor :page
+
+    # Gets the rectangular area.
+    attr_accessor :rectangle
+
+    # Gets the barcode value.
+    attr_accessor :value
+
+    # Gets or sets the barcode download URL.
+    attr_accessor :download_url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'file_format' => :'FileFormat',
-        :'extension' => :'Extension'
+        :'code_type_name' => :'CodeTypeName',
+        :'page' => :'Page',
+        :'rectangle' => :'Rectangle',
+        :'value' => :'Value',
+        :'download_url' => :'DownloadUrl'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'file_format' => :'String',
-        :'extension' => :'String'
+        :'code_type_name' => :'String',
+        :'page' => :'BarcodePage',
+        :'rectangle' => :'Rectangle',
+        :'value' => :'String',
+        :'download_url' => :'String'
       }
     end
 
@@ -61,12 +76,24 @@ module GroupDocsParserCloud
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'FileFormat')
-        self.file_format = attributes[:'FileFormat']
+      if attributes.key?(:'CodeTypeName')
+        self.code_type_name = attributes[:'CodeTypeName']
       end
 
-      if attributes.key?(:'Extension')
-        self.extension = attributes[:'Extension']
+      if attributes.key?(:'Page')
+        self.page = attributes[:'Page']
+      end
+
+      if attributes.key?(:'Rectangle')
+        self.rectangle = attributes[:'Rectangle']
+      end
+
+      if attributes.key?(:'Value')
+        self.value = attributes[:'Value']
+      end
+
+      if attributes.key?(:'DownloadUrl')
+        self.download_url = attributes[:'DownloadUrl']
       end
 
     end
@@ -89,8 +116,11 @@ module GroupDocsParserCloud
     def ==(other)
       return true if self.equal?(other)
       self.class == other.class &&
-          file_format == other.file_format &&
-          extension == other.extension
+          code_type_name == other.code_type_name &&
+          page == other.page &&
+          rectangle == other.rectangle &&
+          value == other.value &&
+          download_url == other.download_url
     end
 
     # @see the `==` method
@@ -102,7 +132,7 @@ module GroupDocsParserCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [file_format, extension].hash
+      [code_type_name, page, rectangle, value, download_url].hash
     end
 
     # Downcases first letter.
