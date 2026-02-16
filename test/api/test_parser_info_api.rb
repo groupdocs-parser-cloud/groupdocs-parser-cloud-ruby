@@ -78,7 +78,7 @@ module GroupDocsParserCloud
       begin
         @info_api.get_info(request)
       rescue ApiClientError => error
-        assert error.message == "Can't find file located at 'folder\\file-not-exist.pdf'."
+        assert error.message == "Can't find file located at 'folder/file-not-exist.pdf'."
       end
     end
 
@@ -92,7 +92,7 @@ module GroupDocsParserCloud
       error = assert_raises ApiClientError do
         @info_api.get_info(request)
       end
-      assert error.message.include? "Password provided for file 'words\\docx\\password-protected.docx' is incorrect."
+      assert error.message.include? "Password provided for file 'words/docx/password-protected.docx' is incorrect."
     end
   end
 end

@@ -64,6 +64,58 @@ module GroupDocsParserCloud
       return new(config)
     end
 
+    # Extract document data using AI and given template.
+    # 
+    # @param request a_i_parse_request
+    # @return [Object]
+    def a_i_parse(request)
+      data, _status_code, _headers = a_i_parse_with_http_info(request)
+      data
+    end
+
+    # Extract document data using AI and given template.
+    # 
+    # @param request a_i_parse_request
+    # @return [Array<(Object, Fixnum, Hash)>]
+    # Object data, response status code and response headers
+    def a_i_parse_with_http_info(request)
+      raise ArgumentError, 'Incorrect request type' unless request.is_a? AIParseRequest
+
+      @api_client.config.logger.debug 'Calling API: ParseApi.a_i_parse ...' if @api_client.config.debugging
+      # verify the required parameter 'options' is set
+      raise ArgumentError, 'Missing the required parameter options when calling ParseApi.a_i_parse' if @api_client.config.client_side_validation && request.options.nil?
+      # resource path
+      local_var_path = '/parser/aiparse'
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(request.options)
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+                                                        header_params: header_params,
+                                                        query_params: query_params,
+                                                        form_params: form_params,
+                                                        body: post_body,
+                                                        access_token: get_access_token,
+                                                        return_type: 'Object')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called:
+        ParseApi#a_i_parse\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      [data, status_code, headers]
+    end
+
     # Extract barcodes from document.
     # 
     # @param request barcodes_request
@@ -324,6 +376,51 @@ module GroupDocsParserCloud
         require file
       end
     end
+  end
+end
+ #
+ # --------------------------------------------------------------------------------------------------------------------
+ # <copyright company="Aspose Pty Ltd" file="a_i_parse_request.rb">
+ #   Copyright (c) Aspose Pty Ltd
+ # </copyright>
+ # <summary>
+ #  Permission is hereby granted, free of charge, to any person obtaining a copy
+ #  of this software and associated documentation files (the "Software"), to deal
+ #  in the Software without restriction, including without limitation the rights
+ #  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ #  copies of the Software, and to permit persons to whom the Software is
+ #  furnished to do so, subject to the following conditions:
+ # 
+ #  The above copyright notice and this permission notice shall be included in all
+ #  copies or substantial portions of the Software.
+ # 
+ #  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ #  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ #  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ #  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ #  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ #  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ #  SOFTWARE.
+ # </summary>
+ # --------------------------------------------------------------------------------------------------------------------
+ #
+
+module GroupDocsParserCloud
+
+  #
+  # Request model for a_i_parse operation.
+  #
+  class AIParseRequest
+
+        # Parse options.
+        attr_accessor :options
+	
+        #
+        # Initializes a new instance.
+        # @param options Parse options.
+        def initialize(options)
+           self.options = options
+        end
   end
 end
  #

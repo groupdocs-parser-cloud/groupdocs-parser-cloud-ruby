@@ -66,7 +66,7 @@ module GroupDocsParserCloud
 
     def upload_test_files
       unless @@test_files_uploaded
-        test_file_path = "test\\test_files\\"
+        test_file_path = "test/test_files/"
 
         TestFile.test_files_list.each do |test_file|
           exist_request = ObjectExistsRequest.new(test_file.path)

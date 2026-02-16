@@ -30,32 +30,9 @@ module GroupDocsParserCloud
   require_relative "./../test_file"
 
   class TestFileApi < TestContext
-    # def test_DeleteFile
-    #   test_file = TestFile.four_pages
-
-    #   # Delete file
-    #   request = DeleteFileRequest.new test_file.path
-    #   response = @file_api.delete_file(request)
-
-    #   # Check file not exists
-    #   request = ObjectExistsRequest.new test_file.path
-    #   response = @storage_api.object_exists(request)
-    #   assert_equal false, response.exists
-
-    #   # Upload file back
-    #   file = File.open("test\\test_files\\" + test_file.path, "r")
-    #   upload_request = UploadFileRequest.new test_file.path, file
-    #   @file_api.upload_file(upload_request)
-
-    #   # Check file exists
-    #   request = ObjectExistsRequest.new test_file.path
-    #   response = @storage_api.object_exists(request)
-    #   assert_equal true, response.exists
-    # end
 
     def test_DownloadFile
       file = TestFile.four_pages
-
       request = DownloadFileRequest.new file.path
       response = @file_api.download_file(request)
       assert_operator response.length, :>, 0

@@ -104,7 +104,7 @@ module GroupDocsParserCloud
         @parse_api.text(request)
       end
 
-      assert error.message.include? "Can't find file located at 'folder\\file-not-exist.pdf'."
+      assert error.message.include? "Can't find file located at 'folder/file-not-exist.pdf'."
     end
 
     def test_extract_text_incorrect_password
@@ -118,7 +118,7 @@ module GroupDocsParserCloud
         @parse_api.text(request)
       end
 
-      assert error.message.include? "Password provided for file 'words\\docx\\password-protected.docx' is incorrect."
+      assert error.message.include? "Password provided for file 'words/docx/password-protected.docx' is incorrect."
     end
   end
 end

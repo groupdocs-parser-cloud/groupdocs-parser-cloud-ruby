@@ -64,7 +64,22 @@ module GroupDocsParserCloud
         @parse_api.parse(request)
       end
 
-      assert error.message.include? "Can't find file located at 'folder\\file-not-exist.pdf'."
+      assert error.message.include? "Can't find file located at 'folder/file-not-exist.pdf'."
+    end
+
+    def test_ai_parse
+      test_file = TestFile.invoice
+      options = AIParseOptions.new
+      options.file_info = test_file.file_info
+      options.template = {
+        "InvoiceNum" => "",
+        "Date" => "",
+        "Email" => ""
+      }
+      request = AIParseRequest.new(options)
+      result = @parse_api.a_i_parse(request)
+      puts result
+      assert result != nil
     end
 
     def test_parse_document_incorrect_password
@@ -79,7 +94,7 @@ module GroupDocsParserCloud
         @parse_api.parse(request)
       end
 
-      assert error.message.include? "Password provided for file 'words\\docx\\password-protected.docx' is incorrect."
+      assert error.message.include? "Password provided for file 'words/docx/password-protected.docx' is incorrect."
     end
 
     def self.get_template

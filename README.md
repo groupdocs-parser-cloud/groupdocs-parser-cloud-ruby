@@ -16,7 +16,7 @@ gem install groupdocs_parser_cloud
 Or add the dependency to your Gemfile and run `bundle install`:
 
 ```ruby
-gem "groupdocs_parser_cloud", "~> 25.7"
+gem "groupdocs_parser_cloud", "~> 26.2"
 ```
 
 ## Getting Started

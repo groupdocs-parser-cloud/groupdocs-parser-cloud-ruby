@@ -78,7 +78,7 @@ module GroupDocsParserCloud
       error = assert_raises ApiClientError do
         @info_api.container(request)
       end
-      assert error.message.include? "Can't find file located at 'folder\\file-not-exist.pdf'."
+      assert error.message.include? "Can't find file located at 'folder/file-not-exist.pdf'."
     end
 
     def test_get_container_item_info_unsupported_file
@@ -90,7 +90,7 @@ module GroupDocsParserCloud
       error = assert_raises ApiClientError do
         @info_api.container(request)
       end
-      assert error.message.include? "The specified file 'video\\avi\\sample.avi' has type which is not currently supported."
+      assert error.message.include? "The specified file 'video/avi/sample.avi' has type which is not currently supported."
     end
 
     def test_get_container_item_info_empty_options

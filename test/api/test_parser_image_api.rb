@@ -43,7 +43,7 @@ module GroupDocsParserCloud
         @parse_api.images(request)
       end
 
-      assert error.message.include? "Can't find file located at 'folder\\file-not-exist.pdf'."
+      assert error.message.include? "Can't find file located at 'folder/file-not-exist.pdf'."
     end
 
     def test_get_image_incorrect_password
@@ -57,7 +57,7 @@ module GroupDocsParserCloud
         @parse_api.images(request)
       end
 
-      assert error.message.include? "Password provided for file 'words\\docx\\password-protected.docx' is incorrect."
+      assert error.message.include? "Password provided for file 'words/docx/password-protected.docx' is incorrect."
     end
 
     def test_get_image_docx
@@ -164,7 +164,7 @@ module GroupDocsParserCloud
         @parse_api.images(request)
       end
 
-      assert error.message.include? "The specified file 'containers\\archive\\docx.zip' has type which is not currently supported."
+      assert error.message.include? "The specified file 'containers/archive/docx.zip' has type which is not currently supported."
     end
   end
 end

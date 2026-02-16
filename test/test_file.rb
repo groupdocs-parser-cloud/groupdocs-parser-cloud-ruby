@@ -45,7 +45,7 @@ module GroupDocsParserCloud
     def self.password_protected
       f = TestFile.new
       f.file_name = "password-protected.docx"
-      f.folder = "words\\docx\\"
+      f.folder = "words/docx/"
       f.password = "password"
       f
     end
@@ -53,84 +53,84 @@ module GroupDocsParserCloud
     def self.four_pages
       f = TestFile.new
       f.file_name = "four-pages.docx"
-      f.folder = "words\\docx\\"
+      f.folder = "words/docx/"
       f
     end
 
     def self.one_page
       f = TestFile.new
       f.file_name = "one-page.docx"
-      f.folder = "words\\docx\\"
+      f.folder = "words/docx/"
       f
     end
 
     def self.barcode
       f = TestFile.new
       f.file_name = "barcodes.docx"
-      f.folder = "words\\docx\\"
+      f.folder = "words/docx/"
       f
     end
 
     def self.template_document_docx
       f = TestFile.new
       f.file_name = "template-document.docx"
-      f.folder = "words\\docx\\"
+      f.folder = "words/docx/"
       f
     end
 
     def self.formatted_document
       f = TestFile.new
       f.file_name = "formatted-document.docx"
-      f.folder = "words\\docx\\"
+      f.folder = "words/docx/"
       f
     end
 
     def self.encoding_detection
       f = TestFile.new
       f.file_name = "encoding-detection.txt"
-      f.folder = "words\\txt\\"
+      f.folder = "words/txt/"
       f
     end
 
     def self.zip
       f = TestFile.new
       f.file_name = "docx.zip"
-      f.folder = "containers\\archive\\"
+      f.folder = "containers/archive/"
       f
     end
 
     def self.zip_with_email_image_pdf
       f = TestFile.new
       f.file_name = "zip-eml-jpg-pdf.zip"
-      f.folder = "containers\\archive\\"
+      f.folder = "containers/archive/"
       f
     end
 
     def self.jpeg_file
       f = TestFile.new
       f.file_name = "document.jpeg"
-      f.folder = "image\\jpeg\\"
+      f.folder = "image/jpeg/"
       f
     end
 
     def self.image_and_attachment
       f = TestFile.new
       f.file_name = "embedded-image-and-attachment.eml"
-      f.folder = "email\\eml\\"
+      f.folder = "email/eml/"
       f
     end
 
     def self.pdf
       f = TestFile.new
       f.file_name = "template-document.pdf"
-      f.folder = "pdf\\"
+      f.folder = "pdf/"
       f
     end
 
     def self.pdf_container
       f = TestFile.new
       f.file_name = "PDF with attachements.pdf"
-      f.folder = "pdf\\"
+      f.folder = "pdf/"
       f.password = "password"
       f
     end
@@ -138,37 +138,44 @@ module GroupDocsParserCloud
     def self.not_exist
       f = TestFile.new
       f.file_name = "file-not-exist.pdf"
-      f.folder = "folder\\"
+      f.folder = "folder/"
       f
     end
 
     def self.rar
       f = TestFile.new
       f.file_name = "sample.rar"
-      f.folder = "containers\\archive\\"
+      f.folder = "containers/archive/"
       f
     end
 
     def self.tar
       f = TestFile.new
       f.file_name = "sample.tar"
-      f.folder = "containers\\archive\\"
+      f.folder = "containers/archive/"
       f
     end
 
     def self.md
       f = TestFile.new
       f.file_name = "sample.md"
-      f.folder = "words\\docx\\"
+      f.folder = "words/docx/"
       f
     end
 
     def self.video
       f = TestFile.new
       f.file_name = "sample.avi"
-      f.folder = "video\\avi\\"
+      f.folder = "video/avi/"
       f
     end
+
+    def self.invoice
+      f = TestFile.new
+      f.file_name = "Invoice.xlsx"
+      f.folder = "cells/"
+      f
+    end    
 
     def self.test_files_list
       [
@@ -182,6 +189,7 @@ module GroupDocsParserCloud
         self.zip_with_email_image_pdf,
         self.jpeg_file,
         self.image_and_attachment,
+        self.invoice
       ]
     end
   end
